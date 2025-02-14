@@ -4,11 +4,11 @@ using ProtocolSystem.Models;
 
 namespace ProtocolSystem.Controllers
 {
-    public class ProcolosController : Controller
+    public class ProtocolosController : Controller
     {
         private readonly AppDbContext _context;
 
-        public ProcolosController(AppDbContext context)
+        public ProtocolosController(AppDbContext context)
         {
             _context = context;
         }
