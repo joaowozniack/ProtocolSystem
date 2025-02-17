@@ -67,5 +67,25 @@ Senha: 123
 - **Busca por título ou cliente**: Implementada com filtros na query do EF Core.
 - **Proteção do sistema com autenticação**.
 
+## 📋 Gerenciamento com Trello
+
+Para organizar as tarefas do projeto, utilizei o Trello seguindo o modelo Kanban. As tarefas são divididas nas seguintes colunas:
+
+- Backlog → Lista de tarefas a serem feitas
+- A fazer → Tarefas priorizadas aguardando para iniciar
+- Em andamento → Tarefas sendo desenvolvidas
+- Concluído → Tarefas finalizadas
+
+Também foi adicionado etiquetas coloridas nos cards, separando em:
+- Configuração: Azul
+- Banco de dados: Laranja
+- Backend: Roxo
+- Frontend: Verde
+- Extra: Amarelo
+
+🔗 Link do Trello: [ProtocolSytem: Kanban](https://trello.com/invite/b/67af52d5ad7a821c233a5bca/ATTI398aa1be5e7330720fae43806322c4329BA3A313/kanban-protocolsystem)
+
 ## ⚠️ Dificuldades Encontradas
 Durante o desenvolvimento, houve dificuldades para fazer a criação de protocolo e acompanhamento de protocolo funcionar corretamente. O problema não foi identificado, mas houve grande empenho na tentativa de solução.
+
+
