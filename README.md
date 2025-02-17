@@ -2,14 +2,16 @@
 
 Este projeto é um sistema básico de **cadastro e gerenciamento de protocolos**, desenvolvido utilizando **.NET Core 8**, **SQL Server**, **MVC** e **Entity Framework Core**.
 
+- Para melhor entendimento, por favor leia todo este documento.
+
 ## 📌 Funcionalidades
-- **Cadastro de Clientes** (Nome, E-mail, Telefone, Endereço);
-- **Cadastro de Protocolos** (Título, Descrição, Data de Abertura/Fechamento, Status e Cliente relacionado);
-- **Cadastro de Status de Protocolo** (Aberto, Em andamento, Fechado);
-- **Acompanhamento de Protocolos** (Registro de ações realizadas em um protocolo);
-- **Autenticação Básica** (Proteção de todas as páginas);
-- **Listagem de protocolos com paginação e ordenação** (Opcional);
-- **Busca por título ou cliente** (Opcional).
+- **Cadastro de Clientes**
+- **Cadastro de Protocolos**
+- **Cadastro de Status de Protocolo**
+- **Acompanhamento de Protocolos**
+- **Autenticação Básica**
+- **Listagem de protocolos com paginação e ordenação**
+- **Busca por título ou cliente**
 
 ## 🛠️ Tecnologias Utilizadas
 - **.NET Core 8**
