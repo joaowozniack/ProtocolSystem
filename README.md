@@ -1,4 +1,4 @@
-# Cadastro de Protocolos
+# ProtocolSystem
 
 Este projeto é um sistema básico de **cadastro e gerenciamento de protocolos**, desenvolvido utilizando **.NET Core 8**, **SQL Server**, **MVC** e **Entity Framework Core**.
 
