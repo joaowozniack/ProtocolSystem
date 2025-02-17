@@ -6,7 +6,7 @@ using ProtocolSystem.wwwroot.Filters;
 
 namespace ProtocolSystem.Controllers
 {
-    [Autenticacao]
+    //[Autenticacao]
     public class ProtocolosController : Controller
     {
         private readonly AppDbContext _context;
