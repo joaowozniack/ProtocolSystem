@@ -16,6 +16,11 @@ namespace ProtocolSystem.Controllers
         // GET: ProtocoloFollows
         public async Task<IActionResult> Index()
         {
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString("Usuario")))
+            {
+                return RedirectToAction("Index", "Login");
+            }
+
             return View(await _context.ProtocoloFollows.ToListAsync());
         }
 

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ProtocolSystem.Models;
 
@@ -14,10 +15,53 @@ namespace ProtocolSystem.Controllers
         }
 
         // GET: Procolos
-        public async Task<IActionResult> Index()
+        public IActionResult Index(string search, string sortOrder, int page = 1, int pageSize = 10)
         {
-            return View(await _context.Protocolos.ToListAsync());
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString("Usuario")))
+            {
+                return RedirectToAction("Index", "Login");
+            }
+
+            var protocolos = _context.Protocolos.Include(p => p.Cliente).Include(p => p.ProtocoloStatus).AsQueryable();
+
+            // Filtro de busca
+            if (!string.IsNullOrEmpty(search))
+            {
+                protocolos = protocolos.Where(p => p.Titulo.Contains(search) || p.Cliente.Nome.Contains(search));
+            }
+
+            // Ordenação dinâmica
+            switch (sortOrder)
+            {
+                case "titulo_asc":
+                    protocolos = protocolos.OrderBy(p => p.Titulo);
+                    break;
+                case "titulo_desc":
+                    protocolos = protocolos.OrderByDescending(p => p.Titulo);
+                    break;
+                case "data_asc":
+                    protocolos = protocolos.OrderBy(p => p.DataAbertura);
+                    break;
+                case "data_desc":
+                    protocolos = protocolos.OrderByDescending(p => p.DataAbertura);
+                    break;
+                default:
+                    protocolos = protocolos.OrderBy(p => p.IdProtocolo); // Ordem padrão
+                    break;
+            }
+
+            // Paginação
+            int totalItens = protocolos.Count();
+            var protocolosPaginados = protocolos.Skip((page - 1) * pageSize).Take(pageSize).ToList();
+
+            ViewBag.Page = page;
+            ViewBag.TotalPages = (int)Math.Ceiling(totalItens / (double)pageSize);
+            ViewBag.SortOrder = sortOrder;
+            ViewBag.Search = search;
+
+            return View(protocolosPaginados);
         }
+
 
         // GET: Procolos/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -40,20 +84,42 @@ namespace ProtocolSystem.Controllers
         // GET: Procolos/Create
         public IActionResult Create()
         {
+            ViewBag.Clientes = new SelectList(_context.Clientes, "IdCliente", "Nome");
+            ViewBag.StatusProtocolos = new SelectList(_context.StatusProtocolos, "IdStatus", "NomeStatus");
             return View();
         }
 
         // POST: Procolos/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdProtocolo,ClienteId,StatusId,DataAbertura,DataFechamento")] Protocolo protocolo)
+        public async Task<IActionResult> Create([Bind("Titulo,Descricao,ClienteId,ProtocoloStatusId")] Protocolo protocolo)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(protocolo);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                try
+                {
+                    _context.Add(protocolo);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError(string.Empty, $"Erro ao salvar protocolo: {ex.Message}");
+                }
             }
+            else
+            {
+                Console.WriteLine("ModelState não é válido");
+                foreach (var modelState in ModelState.Values)
+                {
+                    foreach (var error in modelState.Errors)
+                    {
+                        Console.WriteLine(error.ErrorMessage);
+                    }
+                }
+            }
+            ViewBag.Clientes = new SelectList(_context.Clientes, "IdCliente", "Nome", protocolo.ClienteId);
+            ViewBag.StatusProtocolos = new SelectList(_context.StatusProtocolos, "IdStatus", "NomeStatus", protocolo.ProtocoloStatusId);
             return View(protocolo);
         }
 

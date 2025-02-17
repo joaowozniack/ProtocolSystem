@@ -13,9 +13,15 @@ namespace ProtocolSystem.Controllers
             _context = context;
         }
 
+
         // GET: Cliente
         public async Task<IActionResult> Index()
         {
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString("Usuario")))
+            {
+                return RedirectToAction("Index", "Login");
+            }
+
             return View(await _context.Clientes.ToListAsync());
         }
 
