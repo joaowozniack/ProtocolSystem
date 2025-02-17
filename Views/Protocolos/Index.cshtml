@@ -1,0 +1,58 @@
+﻿@model List<Protocolo>
+
+@{
+    ViewData["Title"] = "Protocolos";
+}
+
+<h2>Lista de Protocolos</h2>
+<a class="btn btn-primary" asp-action="Create">Novo Protocolo</a>
+
+<form method="get">
+    <input type="text" name="search" value="@ViewBag.Search" placeholder="Buscar por título ou cliente..." />
+    <button type="submit">Buscar</button>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Título<a href="?sortOrder=titulo_asc">▲</a> | <a href="?sortOrder=titulo_desc">▼</a></th>
+            <th>Data Abertura<a href="?sortOrder=data_asc">▲</a> | <a href="?sortOrder=data_desc">▼</a></th>
+            <th>Data de Abertura</th>
+            <th>Data de Fechamento</th>
+            <th>Cliente</th>
+            <th>Status</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var protoclo in Model)
+        {
+            <tr>
+                <td>@protoclo.Titulo</td>
+                <td>@protoclo.Descricao</td>
+                <td>@protoclo.DataAbertura.ToString("dd/MM/yyyy")</td>
+                <td>@protoclo.DataFechamento</td>
+                <td>@protoclo.Cliente.Nome</td>
+                <td>@protoclo.ProtocoloStatus.NomeStatus</td>
+                <td>
+                    <a class="btn btn-warning" asp-action="Edit" asp-route-id="@protoclo.IdProtocolo">Editar</a>
+                    <a class="btn btn-info" asp-action="Details" asp-route-id="@protoclo.IdProtocolo">Detalhes</a>
+                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@protoclo.IdProtocolo">Excluir</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<!-- Paginação -->
+<div>
+    @if (ViewBag.Page > 1)
+    {
+        <a href="?page=@(ViewBag.Page - 1)&sortOrder=@ViewBag.SortOrder">Anterior</a>
+    }
+    Página @ViewBag.Page de @ViewBag.TotalPages
+    @if (ViewBag.Page < ViewBag.TotalPages)
+    {
+        <a href="?page=@(ViewBag.Page + 1)&sortOrder=@ViewBag.SortOrder">Próxima</a>
+    }
+</div>

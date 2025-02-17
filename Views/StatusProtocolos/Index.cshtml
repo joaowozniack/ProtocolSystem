@@ -1,0 +1,29 @@
+﻿@model List<StatusProtocolo>
+
+@{
+    ViewData["Title"] = "Status";
+}
+
+<h2>Lista de Status de Protocolo</h2>
+<a class="btn btn-primary" asp-action="Create">Novo Status</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var statusProtocolo in Model)
+        {
+            <tr>
+                <td>@statusProtocolo.NomeStatus</td>
+                <td>
+                    <a class="btn btn-warning" asp-action="Edit" asp-route-id="@statusProtocolo.IdStatus">Editar</a>
+                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@statusProtocolo.IdStatus">Excluir</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

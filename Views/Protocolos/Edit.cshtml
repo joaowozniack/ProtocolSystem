@@ -1,0 +1,29 @@
+﻿@model Protocolo
+
+@{
+    ViewData["Title"] = "Editar Protocolo";
+}
+
+<h2>Editar Protocolo</h2>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="IdProtocolo" />
+    <div class="form-group">
+        <label>Título</label>
+        <input asp-for="Titulo" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label>Descrição</label>
+        <input asp-for="Descricao" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label>Cliente</label>
+        <input asp-for="Cliente.Nome" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label>Status</label>
+        <input asp-for="ProtocoloStatus.IdStatus" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-success">Salvar</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>

@@ -1,0 +1,22 @@
+﻿@model Protocolo
+
+@{
+    ViewData["Title"] = "Excluir Protocolo";
+}
+
+<h2>Tem certeza que deseja excluir este protocolo?</h2>
+
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">@Model.Titulo</h4>
+        <p><strong>Descrição:</strong> @Model.Descricao</p>
+        <p><strong>Cliente:</strong> @Model.Cliente.Nome</p>
+        <p><strong>Status:</strong> @Model.ProtocoloStatus.NomeStatus</p>
+    </div>
+</div>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="IdProtocolo" />
+    <button type="submit" class="btn btn-danger">Excluir</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>

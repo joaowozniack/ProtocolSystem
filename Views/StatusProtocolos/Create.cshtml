@@ -1,0 +1,16 @@
+﻿@model StatusProtocolo
+
+@{
+    ViewData["Title"] = "Novo Status";
+}
+
+<h2>Cadastrar Status</h2>
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label>Nome</label>
+        <input asp-for="NomeStatus" class="form-control" required />
+    </div>
+    <button type="submit" class="btn btn-success">Salvar</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>

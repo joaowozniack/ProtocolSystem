@@ -1,0 +1,35 @@
+﻿@model List<ProtocoloFollow>
+
+@{
+    ViewData["Title"] = "Acompanhamento de Protocolos";
+}
+
+<h2>Acompanhamento de Protocolos</h2>
+
+<a class="btn btn-primary" asp-action="Create">Novo Acompanhamento</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Protocolo</th>
+            <th>Data da Ação</th>
+            <th>Descrição</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var follow in Model)
+        {
+            <tr>
+                <td>@follow.Protocolo.Titulo</td>
+                <td>@follow.DataAcao.ToString("dd/MM/yyyy HH:mm")</td>
+                <td>@follow.DescricaoAcao</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@follow.IdFollow" class="btn btn-warning">Editar</a>
+                    <a asp-action="Details" asp-route-id="@follow.IdFollow" class="btn btn-info">Detalhes</a>
+                    <a asp-action="Delete" asp-route-id="@follow.IdFollow" class="btn btn-danger">Excluir</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
