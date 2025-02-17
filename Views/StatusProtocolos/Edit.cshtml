@@ -4,14 +4,16 @@
     ViewData["Title"] = "Editar Status";
 }
 
-<h2>Editar Status</h2>
+<h2 class="titulo">Editar Status</h2>
 
-<form asp-action="Edit" method="post">
+<form asp-action="Edit" method="post" class="form-model">
     <input type="hidden" asp-for="IdStatus" />
     <div class="form-group">
         <label>Nome</label>
-        <input asp-for="NomeStatus" class="form-control" required />
+        <input asp-for="NomeStatus" class="input-text" required />
     </div>
-    <button type="submit" class="btn btn-success">Salvar</button>
-    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+    <div class="form-action">
+        <button type="submit" class="btn-submit" style="font-size: 15px">Salvar</button>
+        <a asp-action="Index" class="btn-cancel">Cancelar</a>
+    </div>
 </form>

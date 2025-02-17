@@ -4,8 +4,8 @@
     ViewData["Title"] = "Protocolos";
 }
 
-<h2>Lista de Protocolos</h2>
-<a class="btn btn-primary" asp-action="Create">Novo Protocolo</a>
+<h2 class="titulo">Lista de Protocolos</h2>
+<a class="btn-submit-new" asp-action="Create">Novo Protocolo</a>
 
 <form method="get">
     <input type="text" name="search" value="@ViewBag.Search" placeholder="Buscar por título ou cliente..." />
@@ -35,9 +35,9 @@
                 <td>@protoclo.Cliente.Nome</td>
                 <td>@protoclo.ProtocoloStatus.NomeStatus</td>
                 <td>
-                    <a class="btn btn-warning" asp-action="Edit" asp-route-id="@protoclo.IdProtocolo">Editar</a>
-                    <a class="btn btn-info" asp-action="Details" asp-route-id="@protoclo.IdProtocolo">Detalhes</a>
-                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@protoclo.IdProtocolo">Excluir</a>
+                    <a class="btn-submit-edit" asp-action="Edit" asp-route-id="@protoclo.IdProtocolo">Editar</a>
+                    <a class="btn-submit-details" asp-action="Details" asp-route-id="@protoclo.IdProtocolo">Detalhes</a>
+                    <a class="btn-submit-delete" asp-action="Delete" asp-route-id="@protoclo.IdProtocolo">Excluir</a>
                 </td>
             </tr>
         }

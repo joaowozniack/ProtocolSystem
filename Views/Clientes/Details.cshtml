@@ -4,7 +4,7 @@
     ViewData["Title"] = "Detalhes do Cliente";
 }
 
-<h2>Detalhes do Cliente</h2>
+<h2 class="titulo">Detalhes do Cliente</h2>
 
 <div class="card">
     <div class="card-body">
@@ -13,7 +13,10 @@
         <p><strong>Telefone:</strong> @Model.Telefone</p>
         <p><strong>Endereço:</strong> @Model.Endereco</p>
     </div>
+    <div class="form-action">
+        <a asp-action="Edit" asp-route-id="@Model.IdCliente" style="font-size: 15px" class="btn-submit-edit">Editar</a>
+        <a asp-action="Index" class="btn-cancel">Voltar</a>
+    </div>
 </div>
 
-<a asp-action="Edit" asp-route-id="@Model.IdCliente" class="btn btn-warning">Editar</a>
-<a asp-action="Index" class="btn btn-secondary">Voltar</a>
+

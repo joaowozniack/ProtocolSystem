@@ -4,26 +4,28 @@
     ViewData["Title"] = "Editar Protocolo";
 }
 
-<h2>Editar Protocolo</h2>
+<h2 class="titulo">Editar Protocolo</h2>
 
-<form asp-action="Edit" method="post">
+<form asp-action="Edit" method="post" class="form-model">
     <input type="hidden" asp-for="IdProtocolo" />
     <div class="form-group">
         <label>Título</label>
-        <input asp-for="Titulo" class="form-control" required />
+        <input asp-for="Titulo" class="input-text" required />
     </div>
     <div class="form-group">
         <label>Descrição</label>
-        <input asp-for="Descricao" class="form-control" required />
+        <input asp-for="Descricao" class="input-text" required />
     </div>
     <div class="form-group">
         <label>Cliente</label>
-        <input asp-for="Cliente.Nome" class="form-control" required />
+        <input asp-for="Cliente.Nome" class="input-text" required />
     </div>
     <div class="form-group">
         <label>Status</label>
-        <input asp-for="ProtocoloStatus.IdStatus" class="form-control" />
+        <input asp-for="ProtocoloStatus.IdStatus" class="input-text" />
     </div>
-    <button type="submit" class="btn btn-success">Salvar</button>
-    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+    <div class="form-action">
+        <button type="submit" class="btn-submit" style="font-size: 15px">Salvar</button>
+        <a asp-action="Index" class="btn-cancel">Cancelar</a>
+    </div>
 </form>

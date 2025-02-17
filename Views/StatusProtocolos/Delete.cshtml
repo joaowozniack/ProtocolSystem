@@ -1,0 +1,18 @@
+﻿@model StatusProtocolo
+
+@{
+    ViewData["Title"] = "Excluir Status";
+}
+
+<h2 class="titulo">Tem certeza que deseja excluir este status?</h2>
+
+<form asp-action="Delete" method="post" class="card">
+    <div class="card-body">
+        <h4 class="card-title">@Model.NomeStatus</h4>
+    </div>
+    <input type="hidden" asp-for="IdStatus" />
+    <div class="form-action">
+        <button type="submit" class="btn-submit-delete" style="font-size: 15px">Excluir</button>
+        <a asp-action="Index" class="btn-cancel">Cancelar</a>
+    </div>
+</form>

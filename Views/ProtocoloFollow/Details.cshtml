@@ -4,7 +4,7 @@
     ViewData["Title"] = "Detalhes do Acompanhamento";
 }
 
-<h2>Detalhes do Acompanhamento</h2>
+<h2 class="titulo">Detalhes do Acompanhamento</h2>
 
 <div class="card">
     <div class="card-body">
@@ -12,7 +12,8 @@
         <p><strong>Data da Ação:</strong> @Model.DataAcao.ToString("dd/MM/yyyy HH:mm")</p>
         <p><strong>Descrição:</strong> @Model.DescricaoAcao</p>
     </div>
+    <div class="form-action">
+        <a asp-action="Edit" asp-route-id="@Model.IdFollow" style="font-size: 15px" class="btn-submit-edit">Editar</a>
+        <a asp-action="Index" class="btn-cancel">Voltar</a>
+    </div>
 </div>
-
-<a asp-action="Edit" asp-route-id="@Model.IdFollow" class="btn btn-warning">Editar</a>
-<a asp-action="Index" class="btn btn-secondary">Voltar</a>

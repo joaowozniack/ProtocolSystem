@@ -4,8 +4,8 @@
     ViewData["Title"] = "Status";
 }
 
-<h2>Lista de Status de Protocolo</h2>
-<a class="btn btn-primary" asp-action="Create">Novo Status</a>
+<h2 class="titulo">Lista de Status de Protocolo</h2>
+<a class="btn-submit-new" asp-action="Create">Novo Status</a>
 
 <table class="table">
     <thead>
@@ -20,8 +20,8 @@
             <tr>
                 <td>@statusProtocolo.NomeStatus</td>
                 <td>
-                    <a class="btn btn-warning" asp-action="Edit" asp-route-id="@statusProtocolo.IdStatus">Editar</a>
-                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@statusProtocolo.IdStatus">Excluir</a>
+                    <a class="btn-submit-edit" asp-action="Edit" asp-route-id="@statusProtocolo.IdStatus">Editar</a>
+                    <a class="btn-submit-delete" asp-action="Delete" asp-route-id="@statusProtocolo.IdStatus">Excluir</a>
                 </td>
             </tr>
         }

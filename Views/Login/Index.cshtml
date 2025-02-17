@@ -4,11 +4,15 @@
     ViewData["Title"] = "Login";
 }
 
-<h2>Bem-Vindo ao ProtocolSystem</h2>
+<div class="login-page">
+    <h2 class="titulo">Bem-Vindo ao ProtocolSystem</h2>
 
-<form method="post" action="/Login/Autenticar">
-    <input type="text" name="nome" placeholder="Usuário" required />
-    <input type="password" name="senha" placeholder="Senha" required />
-    <button type="submit">Entrar</button>
-</form>
-<p>@ViewBag.Mensagem</p>
+    <form method="post" action="/Login/Autenticar" class="form-login">
+        <input type="text" name="nome" placeholder="Usuário" required class="input-text" />
+        <input type="password" name="senha" placeholder="Senha" required class="input-text" />
+        <button type="submit" class="btn-submit">Entrar</button>
+    </form>
+    <p class="mensagem">@ViewBag.Mensagem</p>
+</div>
+
+

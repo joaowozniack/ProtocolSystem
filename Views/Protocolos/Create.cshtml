@@ -4,29 +4,31 @@
     ViewData["Title"] = "Novo Protocolo";
 }
 
-<h2>Cadastrar Protocolo</h2>
+<h2 class="titulo">Cadastrar Protocolo</h2>
 
-<form asp-action="Create" method="post">
+<form asp-action="Create" method="post" class="form-model">
     <div class="form-group">
         <label>Título</label>
-        <input asp-for="Titulo" class="form-control" required />
+        <input asp-for="Titulo" class="input-text" required />
     </div>
     <div class="form-group">
         <label>Descrição</label>
-        <input asp-for="Descricao" class="form-control" required />
+        <input asp-for="Descricao" class="input-text" required />
     </div>
     <div class="form-group">
         <label>Cliente</label>
-        <select asp-for="ClienteId" class="form-control" asp-items="ViewBag.Clientes">
+        <select asp-for="ClienteId" class="input-text" asp-items="ViewBag.Clientes">
             <option value="" disabled selected>Selecione um cliente</option>
         </select>
     </div>
     <div class="form-group">
         <label>Status</label>
-        <select asp-for="ProtocoloStatusId" class="form-control" asp-items="ViewBag.StatusProtocolos">
+        <select asp-for="ProtocoloStatusId" class="input-text" asp-items="ViewBag.StatusProtocolos">
             <option value="" disabled selected>Selecione um status</option>
         </select>
     </div>
-    <button type="submit" class="btn btn-success">Salvar</button>
-    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+    <div class="form-action">
+        <button type="submit" class="btn-submit" style="font-size: 15px">Salvar</button>
+        <a asp-action="Index" class="btn-cancel">Cancelar</a>
+    </div>
 </form>

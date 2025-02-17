@@ -4,18 +4,17 @@
     ViewData["Title"] = "Excluir Acompanhamento";
 }
 
-<h2>Tem certeza que deseja excluir este acompanhamento?</h2>
+<h2 class="titulo">Tem certeza que deseja excluir este acompanhamento?</h2>
 
-<div class="card">
+<form asp-action="Delete" method="post" class="card">
     <div class="card-body">
         <h4 class="card-title">Protocolo: @Model.Protocolo.Titulo</h4>
         <p><strong>Data da Ação:</strong> @Model.DataAcao.ToString("dd/MM/yyyy HH:mm")</p>
         <p><strong>Descrição:</strong> @Model.DescricaoAcao</p>
     </div>
-</div>
-
-<form asp-action="Delete" method="post">
     <input type="hidden" asp-for="IdFollow" />
-    <button type="submit" class="btn btn-danger">Excluir</button>
-    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+    <div class="form-action">
+        <button type="submit" class="btn-submit-delete" style="font-size: 15px">Excluir</button>
+        <a asp-action="Index" class="btn-cancel">Cancelar</a>
+    </div>
 </form>

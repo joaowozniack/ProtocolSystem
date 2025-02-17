@@ -4,13 +4,15 @@
     ViewData["Title"] = "Novo Status";
 }
 
-<h2>Cadastrar Status</h2>
+<h2 class="titulo">Cadastrar Status</h2>
 
-<form asp-action="Create" method="post">
+<form asp-action="Create" method="post" class="form-model">
     <div class="form-group">
         <label>Nome</label>
-        <input asp-for="NomeStatus" class="form-control" required />
+        <input asp-for="NomeStatus" class="input-text" required />
     </div>
-    <button type="submit" class="btn btn-success">Salvar</button>
-    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+    <div class="form-action">
+        <button type="submit" class="btn-submit" style="font-size: 15px">Salvar</button>
+        <a asp-action="Index" class="btn-cancel">Cancelar</a>
+    </div>
 </form>
