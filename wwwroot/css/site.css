@@ -2,8 +2,8 @@ body {
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;
     height: 100%;
-    padding: 0;
-    margin: 0;
+    padding: auto;
+    margin: auto;
 }
 
 .login-page {
@@ -55,12 +55,27 @@ body {
     gap: 10px;
 }
 
+.form-busca {
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+}
+
 /* CSS Input */
 
 .input-text {
     width: 100%;
     padding: 10px;
     margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+
+.input-busca {
+    width: 20em;
+    padding: 10px;
+    margin: 10px 10px;
     border: 1px solid #ccc;
     border-radius: 3px;
     box-sizing: border-box;
@@ -165,6 +180,14 @@ body {
     margin-bottom: 10px;
 }
 
+.paginacao {
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
 /* CSS Button */
 
 .btn-submit {
@@ -260,3 +283,35 @@ body {
     background-color: #5a6268;
 }
 
+.btn-busca {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-busca:hover {
+    background-color: #0056b3;
+}
+
+.btn-paginacao {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    margin: 0 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.btn-paginacao:hover {
+    background-color: #0056b3;
+}
+
+.btn-ordenacao {
+    text-decoration: none;
+    color: black;
+}

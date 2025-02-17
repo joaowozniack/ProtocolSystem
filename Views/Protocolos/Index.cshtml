@@ -7,16 +7,16 @@
 <h2 class="titulo">Lista de Protocolos</h2>
 <a class="btn-submit-new" asp-action="Create">Novo Protocolo</a>
 
-<form method="get">
-    <input type="text" name="search" value="@ViewBag.Search" placeholder="Buscar por título ou cliente..." />
-    <button type="submit">Buscar</button>
+<form method="get" class="form-busca">
+    <input type="text" name="search" value="@ViewBag.Search" placeholder="Buscar por título ou cliente..." class="input-busca" />
+    <button type="submit" class="btn-busca">Buscar</button>
 </form>
 
 <table class="table">
     <thead>
         <tr>
-            <th>Título<a href="?sortOrder=titulo_asc">▲</a> | <a href="?sortOrder=titulo_desc">▼</a></th>
-            <th>Data Abertura<a href="?sortOrder=data_asc">▲</a> | <a href="?sortOrder=data_desc">▼</a></th>
+            <th>Título<a class="btn-ordenacao" href="?sortOrder=titulo_asc">▲</a> | <a class="btn-ordenacao" href="?sortOrder=titulo_desc">▼</a></th>
+            <th>Data Abertura<a class="btn-ordenacao" href="?sortOrder=data_asc">▲</a> | <a class="btn-ordenacao" href="?sortOrder=data_desc">▼</a></th>
             <th>Data de Abertura</th>
             <th>Data de Fechamento</th>
             <th>Cliente</th>
@@ -45,14 +45,14 @@
 </table>
 
 <!-- Paginação -->
-<div>
+<div class="paginacao">
     @if (ViewBag.Page > 1)
     {
-        <a href="?page=@(ViewBag.Page - 1)&sortOrder=@ViewBag.SortOrder">Anterior</a>
+        <a href="?page=@(ViewBag.Page - 1)&sortOrder=@ViewBag.SortOrder" class="btn-paginacao">Anterior</a>
     }
     Página @ViewBag.Page de @ViewBag.TotalPages
     @if (ViewBag.Page < ViewBag.TotalPages)
     {
-        <a href="?page=@(ViewBag.Page + 1)&sortOrder=@ViewBag.SortOrder">Próxima</a>
+        <a href="?page=@(ViewBag.Page + 1)&sortOrder=@ViewBag.SortOrder" class="btn-paginacao">Próxima</a>
     }
 </div>
