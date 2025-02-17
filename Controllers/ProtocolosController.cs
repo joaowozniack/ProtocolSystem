@@ -17,7 +17,7 @@ namespace ProtocolSystem.Controllers
         }
 
         // GET: Procolos
-        public IActionResult Index(string search, string sortOrder, int page = 1, int pageSize = 10)
+        public IActionResult Index(string search, string sortOrder, int page = 1, int pageSize = 4)
         {
             var protocolos = _context.Protocolos.Include(p => p.Cliente).Include(p => p.ProtocoloStatus).AsQueryable();
 
@@ -69,6 +69,8 @@ namespace ProtocolSystem.Controllers
             }
 
             var protocolo = await _context.Protocolos
+                .Include(p => p.Cliente)
+                .Include(p => p.ProtocoloStatus)
                 .FirstOrDefaultAsync(m => m.IdProtocolo == id);
             if (protocolo == null)
             {
@@ -128,7 +130,10 @@ namespace ProtocolSystem.Controllers
                 return NotFound();
             }
 
-            var protocolo = await _context.Protocolos.FindAsync(id);
+            var protocolo = await _context.Protocolos
+                .Include(p => p.Cliente)
+                .Include(p => p.ProtocoloStatus)
+                .FirstOrDefaultAsync(m => m.IdProtocolo == id);
             if (protocolo == null)
             {
                 return NotFound();
@@ -178,6 +183,8 @@ namespace ProtocolSystem.Controllers
             }
 
             var protocolo = await _context.Protocolos
+                .Include(p => p.Cliente)
+                .Include(p => p.ProtocoloStatus)
                 .FirstOrDefaultAsync(m => m.IdProtocolo == id);
             if (protocolo == null)
             {

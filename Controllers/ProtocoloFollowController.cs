@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ProtocolSystem.Models;
 using ProtocolSystem.wwwroot.Filters;
@@ -42,6 +43,7 @@ namespace ProtocolSystem.Controllers
         //GET: ProtocoloFollows/Create
         public IActionResult Create()
         {
+            ViewBag.Protocolos = new SelectList(_context.Protocolos, "IdProtocolo", "Titulo");
             return View();
         }
 
@@ -56,6 +58,7 @@ namespace ProtocolSystem.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewBag.Protocolos = new SelectList(_context.Protocolos, "IdProtocolo", "Titulo", protocoloFollow.ProtocoloId);
             return View(protocoloFollow);
         }
 
