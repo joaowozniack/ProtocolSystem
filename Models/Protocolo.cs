@@ -11,12 +11,14 @@ namespace ProtocolSystem.Models
         public string Titulo { get; set; }
         public string Descricao { get; set; }
         public DateTime DataAbertura { get; set; } = DateTime.Now;
-        public DateTime DataFechamento { get; set; }
+        public DateTime? DataFechamento { get; set; }
 
+        [Required]
         [ForeignKey("Cliente")]
         public int ClienteId { get; set; }
         public Cliente Cliente { get; set; }
 
+        [Required]
         [ForeignKey("ProtocoloStatus")]
         public int ProtocoloStatusId { get; set; }
         public StatusProtocolo ProtocoloStatus { get; set; }

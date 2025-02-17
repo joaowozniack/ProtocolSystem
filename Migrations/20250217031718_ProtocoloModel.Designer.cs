@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProtocolSystem;
 
@@ -11,9 +12,11 @@ using ProtocolSystem;
 namespace ProtocolSystem.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250217031718_ProtocoloModel")]
+    partial class ProtocoloModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -52,44 +55,6 @@ namespace ProtocolSystem.Migrations
                     b.HasKey("IdCliente");
 
                     b.ToTable("Clientes");
-                });
-
-            modelBuilder.Entity("ProtocolSystem.Models.Protocolo", b =>
-                {
-                    b.Property<int>("IdProtocolo")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdProtocolo"));
-
-                    b.Property<int>("ClienteId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("DataAbertura")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DataFechamento")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Descricao")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("ProtocoloStatusId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Titulo")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.HasKey("IdProtocolo");
-
-                    b.HasIndex("ClienteId");
-
-                    b.HasIndex("ProtocoloStatusId");
-
-                    b.ToTable("Protocolos");
                 });
 
             modelBuilder.Entity("ProtocolSystem.Models.ProtocoloFollow", b =>
@@ -135,28 +100,56 @@ namespace ProtocolSystem.Migrations
                     b.ToTable("StatusProtocolos");
                 });
 
-            modelBuilder.Entity("ProtocolSystem.Models.Usuario", b =>
+            modelBuilder.Entity("Protocolo", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("IdProtocolo")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdProtocolo"));
 
-                    b.Property<string>("Nome")
+                    b.Property<int>("ClienteId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("DataAbertura")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DataFechamento")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Descricao")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Senha")
+                    b.Property<int>("ProtocoloStatusId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Titulo")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
-                    b.HasKey("Id");
+                    b.HasKey("IdProtocolo");
 
-                    b.ToTable("Usuarios");
+                    b.HasIndex("ClienteId");
+
+                    b.HasIndex("ProtocoloStatusId");
+
+                    b.ToTable("Protocolos");
                 });
 
-            modelBuilder.Entity("ProtocolSystem.Models.Protocolo", b =>
+            modelBuilder.Entity("ProtocolSystem.Models.ProtocoloFollow", b =>
+                {
+                    b.HasOne("Protocolo", "Protocolo")
+                        .WithMany()
+                        .HasForeignKey("ProtocoloId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Protocolo");
+                });
+
+            modelBuilder.Entity("Protocolo", b =>
                 {
                     b.HasOne("ProtocolSystem.Models.Cliente", "Cliente")
                         .WithMany()
@@ -173,17 +166,6 @@ namespace ProtocolSystem.Migrations
                     b.Navigation("Cliente");
 
                     b.Navigation("ProtocoloStatus");
-                });
-
-            modelBuilder.Entity("ProtocolSystem.Models.ProtocoloFollow", b =>
-                {
-                    b.HasOne("ProtocolSystem.Models.Protocolo", "Protocolo")
-                        .WithMany()
-                        .HasForeignKey("ProtocoloId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Protocolo");
                 });
 
             modelBuilder.Entity("ProtocolSystem.Models.StatusProtocolo", b =>
