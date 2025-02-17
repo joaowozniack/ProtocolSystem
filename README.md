@@ -25,7 +25,6 @@ Certifique-se de ter instalado:
 - [.NET SDK 8](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
 - [SQL Server](https://www.microsoft.com/pt-br/sql-server/sql-server-downloads)
 - [Visual Studio 2022](https://visualstudio.microsoft.com/) ou [VS Code](https://code.visualstudio.com/)
-- [Postman](https://www.postman.com/) (Opcional, para testar APIs)
 
 ### 2️⃣ **Configurar o Banco de Dados**
 1. No SQL Server, crie um banco de dados chamado **CadastroProtocolos**;
