@@ -2,9 +2,11 @@
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ProtocolSystem.Models;
+using ProtocolSystem.wwwroot.Filters;
 
 namespace ProtocolSystem.Controllers
 {
+    [Autenticacao]
     public class ProtocolosController : Controller
     {
         private readonly AppDbContext _context;
@@ -17,11 +19,6 @@ namespace ProtocolSystem.Controllers
         // GET: Procolos
         public IActionResult Index(string search, string sortOrder, int page = 1, int pageSize = 10)
         {
-            if (string.IsNullOrEmpty(HttpContext.Session.GetString("Usuario")))
-            {
-                return RedirectToAction("Index", "Login");
-            }
-
             var protocolos = _context.Protocolos.Include(p => p.Cliente).Include(p => p.ProtocoloStatus).AsQueryable();
 
             // Filtro de busca

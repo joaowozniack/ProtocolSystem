@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using ProtocolSystem;
+using ProtocolSystem.wwwroot.Filters;
 
 var builder = WebApplication.CreateBuilder(args);
 

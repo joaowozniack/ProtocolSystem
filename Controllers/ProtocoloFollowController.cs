@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ProtocolSystem.Models;
+using ProtocolSystem.wwwroot.Filters;
 
 namespace ProtocolSystem.Controllers
 {
+    [Autenticacao]
     public class ProtocoloFollowController : Controller
     {
         private readonly AppDbContext _context;
@@ -16,11 +18,6 @@ namespace ProtocolSystem.Controllers
         // GET: ProtocoloFollows
         public async Task<IActionResult> Index()
         {
-            if (string.IsNullOrEmpty(HttpContext.Session.GetString("Usuario")))
-            {
-                return RedirectToAction("Index", "Login");
-            }
-
             return View(await _context.ProtocoloFollows.ToListAsync());
         }
 
